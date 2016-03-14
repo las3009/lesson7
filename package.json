@@ -1,0 +1,24 @@
+{
+  "name": "lesson7",
+  "version": "1.0.0",
+  "description": "Todo List App",
+  "main": "Gruntfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/las3009/lesson7.git"
+  },
+  "author": "Dave Calleja",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/las3009/lesson7/issues"
+  },
+  "homepage": "https://github.com/las3009/lesson7#readme",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-connect": "^1.0.0",
+    "grunt-contrib-watch": "^0.6.1"
+  }
+}
