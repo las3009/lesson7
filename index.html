@@ -21,22 +21,10 @@
                     </div>
                 </div>
                 <ul id="todo-list" class="list-group">
-                    <li class="list-group-item completed">
-                        <span>Todo Name</span>
-                        <a href="#" class="action pull-right btn-xs glyphicon glyphicon-trash"></a>
-                        <a href="#" class="action pull-right btn-xs glyphicon glyphicon-ok"></a>
-                    </li>
+
                 </ul>
                 <div id="footer" class="panel-footer no-border clearfix">
-                    <div class="pull-left">
-                        <span>1</span>
-                        <span>Todos</span>
-                    </div>
-                    <div class="btn-group pull-right">
-                        <a href="#/all" class="btn btn-default">All</a>
-                        <a href="#/pending" class="btn btn-default">Pending</a>
-                        <a href="#/completed" class="btn btn-default">Completed</a>
-                    </div>
+
                 </div>
             </div>
             <footer>
@@ -46,5 +34,27 @@
         <script src="//localhost:35729/livereload.js"></script>
         <script src="/bower_components/handlebars/handlebars.js"></script>
         <script src="/js/app.js"></script>
+        <script id="footer-template" type="text/x-handlebars-template">
+        <div class="pull-left">
+                <span>{{todos.length}}</span>
+                <span>Todos</span>
+                </div>
+                <div class="btn-group pull-right">
+                <a href="#/all" class="btn btn-default">All</a>
+                <a href="#/pending" class="btn btn-default">Pending</a>
+                <a href="#/completed" class="btn btn-default">Completed</a>
+                </div>
+        </script>
+        <script id="todo-template" type="text/x-handlebars-template">
+            {{#each todos}}
+            <li class="list-group-item {{#if completed }} completed {{/if}}">
+                <span>{{title}}</span>
+                <a href="#" data-function='delete' class="action pull-right btn-xs glyphicon glyphicon-trash"></a>
+                {{#unless completed}}
+                <a href="#" data-function='complete' class="action pull-right btn-xs glyphicon glyphicon-ok"></a>
+                {{/unless}}
+            </li>
+            {{/each}}
+            </script>
     </body>
 </html>
