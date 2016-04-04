@@ -1,50 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Todo List</title>
-        <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css" />
-        <link rel="stylesheet" href="/css/main.css" />
-    </head>
-    <body class="cover-bg">
-        <section class="container">
-            <header class="page-header">
-                <h1 class="text-center">Todo List</h1>
-            </header>
-            <div class="cover-bg panel panel-default no-border">
-                <div class="panel-heading no-border">
-                    <div id="input" class="input-group">
-                        <input class="form-control" type="text" placeholder="What needs to be done?" />
-                        <div class="input-group-btn">
-                            <button class="btn btn-success">Add</button>
-                        </div>
-                    </div>
-                </div>
-                <ul id="todo-list" class="list-group">
-                    <li class="list-group-item completed">
-                        <span>Todo Name</span>
-                        <a href="#" class="action pull-right btn-xs glyphicon glyphicon-trash"></a>
-                        <a href="#" class="action pull-right btn-xs glyphicon glyphicon-ok"></a>
-                    </li>
-                </ul>
-                <div id="footer" class="panel-footer no-border clearfix">
-                    <div class="pull-left">
-                        <span>1</span>
-                        <span>Todos</span>
-                    </div>
-                    <div class="btn-group pull-right">
-                        <a href="#/all" class="btn btn-default">All</a>
-                        <a href="#/pending" class="btn btn-default">Pending</a>
-                        <a href="#/completed" class="btn btn-default">Completed</a>
-                    </div>
+<head>
+    <meta charset="UTF-8">
+    <title>Todo List</title>
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/main.css"/>
+</head>
+<body class="cover-bg">
+<section class="container">
+    <header class="page-header">
+        <h1 class="text-center">Todo List</h1>
+    </header>
+    <div class="cover-bg panel panel-default no-border">
+        <div class="panel-heading no-border">
+            <div id="input" class="input-group">
+                <input class="form-control" type="text" placeholder="What needs to be done?"/>
+                <div class="input-group-btn">
+                    <button class="btn btn-success">Add</button>
                 </div>
             </div>
-            <footer>
-                &copy; 2016 - My Todo List
-            </footer>
-        </section>
-        <script src="//localhost:35729/livereload.js"></script>
-        <script src="/bower_components/handlebars/handlebars.js"></script>
-        <script src="/js/app.js"></script>
-    </body>
+        </div>
+        <ul id="todo-list" class="list-group">
+        </ul>
+        <div id="footer" class="panel-footer no-border clearfix">
+
+        </div>
+    </div>
+    <footer>
+        &copy; 2016 - My Todo List
+    </footer>
+</section>
+<script src="//localhost:35729/livereload.js"></script>
+<script src="/bower_components/handlebars/handlebars.js"></script>
+<script src="/js/app.js"></script>
+<script id="footer-template" type="text/x-handlebars-template">
+    <div class="pull-left">
+        <span>{{todos.length}}</span>
+        <span>Todos</span>
+    </div>
+    <div class="btn-group pull-right">
+        <a href="#/all" class="btn btn-default">All</a>
+        <a href="#/pending" class="btn btn-default">Pending</a>
+        <a href="#/completed" class="btn btn-default">Completed</a>
+    </div>
+</script>
+<script id="todo-template" type="text/x-handlebars-template">
+    {{#each todos}}
+    <li class="list-group-item {{#if completed}}completed{{/if}}">
+        <span>{{title}}</span>
+        <a href="#" data-function="delete" class="action pull-right btn-xs glyphicon glyphicon-trash"></a>
+        {{#unless completed}}
+        <a href="#" data-function="complete" class="action pull-right btn-xs glyphicon glyphicon-ok"></a>
+        {{/unless}}
+    </li>
+    {{/each}}
+</script>
+</body>
 </html>
